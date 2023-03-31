@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site</title>
+    <style>
+        .principalTitle{
+            font-size: larger;
+            font-family: 'Arial, sans-serif';
+            font-weight: 700;
+            text-align: center;
+        }
+        .title{
+            font-size: medium;
+            font-family: 'Arial, sans-serif';
+            font-weight: 700;
+            text-align: center;
+        }
+        .label{
+            font-size: medium;
+            font-family: 'Arial, sans-serif';
+        }
+        body{
+            color: blue;
+        }
+        #nameId{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <tr>
+        <td class="principalTitle" colspan="100%">
+            Formulário!!!
+        </td>
+    </tr>
+    <div>
+        <h1>Formulário!</h1>
+    </div>
+    <form action="salvarDados.php">
+        <table border=2 class="table">
+            <tr>
+                <td colspan=100% class="title">Dados Pessoais</td>
+            </tr>
+            <tr>
+                <td class="label">Name: </td>
+                <td>
+                    <input type="text" id="nameId" name="name" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Email: </td>
+                <td>
+                    <input type="text" id="EmailId" name="Email" onblur="validacaoEmail(this)" maxlength="60" size="65"/>
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td class="label">Telephone: </td>
+                <td>
+                    <input type="number" id="telephoneId" name="telephone" size="9" maxlength="9"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">CEP: </td>
+                <td>
+                    <input type="text" id="CEPId" name="CEP" />
+                </td>
+            </tr>
+                <td class="label">Address: </td>
+                <td>
+                    <input type="text" id="addressId" name="address" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">CPF: </td>
+                <td>
+                    <input type="text" id="CPFId" name="CPF" size="11" maxlength="11"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="title" colspan=100%>
+                    <input type="submit">
+
+                    <button type="button" onclick="fnValidarCampos()" >Novo Botão</button>
+                    <input type="button" onclick="fnValidarCampos()" value="Enviar com validação">
+                </td>
+            </tr>
+        </table>
+    </form>
+    </body>  
+    
+<script>
+    function fnValidarCampos() {
+
+        var name = document.getElementById("nameId")
+        var telephone = document.getElementById("telephoneId")
+        var CEP = document.getElementById("CEPId")
+        var address = document.getElementById("addressId")
+        var CPF = document.getElementById("CPF")
+
+        if(name.value == "") {
+            alert("Nome não foi informado!");
+            return false;
+        }
+        if(name.value.length < 4){
+            alert("Nome muito pequeno!");
+            return false;
+        }
+        if(telephone.value == "") {
+            alert("Telefone não foi informado!");
+            return false;
+        }
+        if(CEP.value == "") {
+            alert("CEP não foi informado!");
+            return false;
+        }
+        if(address.value == "") {
+            alert("Endereço não foi informado!");
+            return false;
+        }
+        if(CPF.value == "") {
+            alert("CPF não foi informado!");
+            return false;
+        }
+        return true;
+    }
+</script>      
+</html>
