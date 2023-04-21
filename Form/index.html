@@ -25,22 +25,44 @@
         body{
             color: blue;
         }
+        h1{
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%)
+        }
+        form{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%)
+        }
         #nameId{
-            color: red;
+            color: green;
+        }
+        #EmailId{
+            color: green;
+        }
+        #telephoneId{
+            color: green;
+        }
+        #CEPId{
+            color: green;
+        }
+        #addressId{
+            color: green;
+        }
+        #CPFId{
+            color: green;
         }
     </style>
 </head>
 <body>
-    <tr>
-        <td class="principalTitle" colspan="100%">
-            Formulário!!!
-        </td>
-    </tr>
     <div>
         <h1>Formulário!</h1>
     </div>
     <form action="salvarDados.php">
-        <table border=2 class="table">
+        <table border=5 class="table">
             <tr>
                 <td colspan=100% class="title">Dados Pessoais</td>
             </tr>
@@ -53,20 +75,21 @@
             <tr>
                 <td class="label">Email: </td>
                 <td>
-                    <input type="text" id="EmailId" name="Email" onblur="validacaoEmail(this)" maxlength="60" size="65"/>
+                    <div id="msgemail"> </div>
+                    <input type="text" id="EmailId" name="email" onblur="validacaoEmail(this)" maxlength="40" size="45"/>
                 </td>
             </tr>
             <tr>
             <tr>
                 <td class="label">Telephone: </td>
                 <td>
-                    <input type="number" id="telephoneId" name="telephone" size="9" maxlength="9"/>
+                    <input type="text" id="telephoneId" name="telephone" size="9" maxlength="9"/>
                 </td>
             </tr>
             <tr>
                 <td class="label">CEP: </td>
                 <td>
-                    <input type="text" id="CEPId" name="CEP" />
+                    <input type="text" id="CEPId" name="CEP" size="8" maxlength="8"/>
                 </td>
             </tr>
                 <td class="label">Address: </td>
@@ -84,8 +107,8 @@
                 <td class="title" colspan=100%>
                     <input type="submit">
 
-                    <button type="button" onclick="fnValidarCampos()" >Novo Botão</button>
-                    <input type="button" onclick="fnValidarCampos()" value="Enviar com validação">
+                    <button type="button" onclick="fnValidarCampos()" >Verificar</button>
+                    <input type="button" onclick="fnValidarCampos()" value="Verificar com validação">
                 </td>
             </tr>
         </table>
@@ -99,7 +122,7 @@
         var telephone = document.getElementById("telephoneId")
         var CEP = document.getElementById("CEPId")
         var address = document.getElementById("addressId")
-        var CPF = document.getElementById("CPF")
+        var CPF = document.getElementById("CPFId")
 
         if(name.value == "") {
             alert("Nome não foi informado!");
@@ -126,6 +149,28 @@
             return false;
         }
         return true;
+    }
+</script>
+
+<script language="Javascript">
+    function validacaoEmail(field) {
+    usuario = field.value.substring(0, field.value.indexOf("@"));
+    dominio = field.value.substring(field.value.indexOf("@") + 1, field.value.length);
+        if ((usuario.length >=1) &&
+            (dominio.length >=3) &&
+            (usuario.search("@")== -1) &&
+            (dominio.search("@")== -1) &&
+            (usuario.search(" ")== -1) &&
+            (dominio.search(" ")== -1) &&
+            (dominio.search(".")!= -1) &&
+            (dominio.indexOf(".")>= 1) &&
+            (dominio.lastIndexOf(".") < dominio.length - 1)) {
+                document.getElementById("msgemail").innerHTML="E-mail válido";
+            }
+            else {
+                document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido </font>";
+                alert("E-mail inválido!");
+            }
     }
 </script>      
 </html>
