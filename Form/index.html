@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site</title>
+    <title>Site Formulário</title>
     <style>
         .principalTitle{
             font-size: larger;
@@ -67,7 +67,7 @@
                 <td colspan=100% class="title">Dados Pessoais</td>
             </tr>
             <tr>
-                <td class="label">Name: </td>
+                <td class="label">Nome: </td>
                 <td>
                     <input type="text" id="nameId" name="name" />
                 </td>
@@ -76,12 +76,12 @@
                 <td class="label">Email: </td>
                 <td>
                     <div id="msgemail"> </div>
-                    <input type="text" id="EmailId" name="email" onblur="validacaoEmail(this)" maxlength="40" size="45"/>
+                    <input type="text" id="EmailId" name="email" onblur="validationEmail(this)" maxlength="40" size="45"/>
                 </td>
             </tr>
             <tr>
             <tr>
-                <td class="label">Telephone: </td>
+                <td class="label">Telefone: </td>
                 <td>
                     <input type="text" id="telephoneId" name="telephone" size="9" maxlength="9"/>
                 </td>
@@ -92,7 +92,7 @@
                     <input type="text" id="CEPId" name="CEP" size="8" maxlength="8"/>
                 </td>
             </tr>
-                <td class="label">Address: </td>
+                <td class="label">Endereço: </td>
                 <td>
                     <input type="text" id="addressId" name="address" />
                 </td>
@@ -107,8 +107,8 @@
                 <td class="title" colspan=100%>
                     <input type="submit">
 
-                    <button type="button" onclick="fnValidarCampos()" >Verificar</button>
-                    <input type="button" onclick="fnValidarCampos()" value="Verificar com validação">
+                    <button type="button" onclick="fnValidationCampos()" >Verificar</button>
+                    <input type="button" onclick="fnValidationCampos()" value="Verificar com validação">
                 </td>
             </tr>
         </table>
@@ -116,7 +116,7 @@
     </body>  
     
 <script>
-    function fnValidarCampos() {
+    function fnValidationCampos() {
 
         var name = document.getElementById("nameId")
         var telephone = document.getElementById("telephoneId")
@@ -153,7 +153,7 @@
 </script>
 
 <script language="Javascript">
-    function validacaoEmail(field) {
+    function validationEmail(field) {
     usuario = field.value.substring(0, field.value.indexOf("@"));
     dominio = field.value.substring(field.value.indexOf("@") + 1, field.value.length);
         if ((usuario.length >=1) &&
